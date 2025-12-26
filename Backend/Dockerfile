@@ -7,7 +7,7 @@ FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
 
 # Copiamos el JAR desde la subcarpeta /
-COPY tarjet/app.jar app.jar
+COPY SentimentAPI/target/*.jar app.jar
 
 # Puerto expuesto
 EXPOSE 8080
