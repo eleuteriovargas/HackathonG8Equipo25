@@ -10,6 +10,11 @@ public class SentimentResult {
         this.probability = probability;
     }
 
+    public SentimentResult(SentimentResult result) {
+        this.label = result.label;
+        this.probability = result.getProbability();
+    }
+
     public String getLabel() {
         return label;
     }
