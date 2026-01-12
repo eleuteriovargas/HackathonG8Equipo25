@@ -1,0 +1,23 @@
+# Entorno virtual
+venv_hackaton/
+
+# Datasets (raw y clean)
+Data-science/data/*.csv
+
+# Conservar la carpeta data/
+!Data-science/data/.gitkeep
+
+# Modelos entrenados
+Data-science/models/*
+
+# Conservar la carpeta models/
+!Data-science/models/.gitkeep
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
