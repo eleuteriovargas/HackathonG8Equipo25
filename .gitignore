@@ -8,7 +8,10 @@ Data-science/data/*.csv
 !Data-science/data/.gitkeep
 
 # Modelos entrenados
-Data-science/models/
+Data-science/models/*
+
+# Conservar la carpeta models/
+!Data-science/models/.gitkeep
 
 # Python bytecode
 __pycache__/

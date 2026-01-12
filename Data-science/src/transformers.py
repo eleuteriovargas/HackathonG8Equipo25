@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
 from .text_preprocessing import full_clean
 
@@ -10,7 +11,6 @@ class TextCleaner(BaseEstimator, TransformerMixin):
     - Pipelines de sklearn
     - GridSearchCV
     - joblib
-    - ejecución paralela (n_jobs != 1)
     """
 
     def fit(self, X, y=None):
@@ -21,7 +21,11 @@ class TextCleaner(BaseEstimator, TransformerMixin):
         X: array-like o DataFrame con una sola columna de texto
         """
         # Convertimos a array 1D
-        X = np.asarray(X).ravel()
+        # 1. Se aegura que X sea iterable (list, Series o array)
+        if isinstance(X, pd.DataFrame):
+            X = X.iloc[:, 0]
+        elif isinstance(X, np.ndarray):
+            X = X.ravel()
 
-        # Aplicamos limpieza
-        return np.array([full_clean(text) for text in X])
+        # 2. Se aplica limpieza devolviendo una LISTA de Python.
+        return [full_clean(str(text)) for text in X]
