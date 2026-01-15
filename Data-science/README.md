@@ -130,6 +130,21 @@ Data-science/
     
     El modelo con mejor desempeño se guardará automáticamente en formato `.joblib` en la carpeta `models/`.
 
+6. **Ejecutar la aplicación:**
+
+    En la terminal, ubicarse en la carpeta Data-science y ejecutar el siguiente comando:
+
+    ```bash
+    python -m uvicorn app:app --host 0.0.0.0 --port 8000
+    ```
+    
+    Ir al navegador mientras la aplicación está corriendo e ingresar:
+
+    ```bash
+    http://127.0.0.1:8000/docs
+    ```
+    Realizar pruebas de la aplicación con comentarios en inglés. El input debe estar en formato JSON.
+
 ---
 
 ## Tecnologías y conceptos
