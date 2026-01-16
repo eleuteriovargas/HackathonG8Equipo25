@@ -33,11 +33,12 @@ public class SentimentController {
         return ResponseEntity.ok(
                 new SentimentResponse(
                         request.getText(),
-                        result.getLabel(),
-                        result.getProbability()
+                        result.label(),
+                        result.probability()
                 )
         );
     }
+
 
     @PostMapping("/csv")
     public ResponseEntity<LoteSentimentResponse> analizeLote(@RequestBody List<SentimentRequest> requests) {

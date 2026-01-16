@@ -10,7 +10,7 @@ public class DsClient {
 
 //    public DsClient(WebClient)
 
-    public Comentario verificarComentario(@NotBlank String texto) {
-        return new Comentario();
-    }
+//    public Comentario verificarComentario(@NotBlank String texto) {
+//        return new Comentario();
+//    }
 }

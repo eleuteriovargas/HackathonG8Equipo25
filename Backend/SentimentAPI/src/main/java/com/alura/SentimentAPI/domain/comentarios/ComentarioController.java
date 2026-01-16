@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/sentimentMelvin")
 public class ComentarioController {
 
-    @Autowired
-    private ComentarioService service;
-
-    @PostMapping
-    public ResponseEntity<DatosComentarioResponse> verificar(@RequestBody @Valid DatosComentarioRequest datos) {
-
-        var detalleComentario = service.mostrar(datos);
-
-        return ResponseEntity.ok(detalleComentario);
-    }
+//    @Autowired
+//    private ComentarioService service;
+//
+//    @PostMapping
+//    public ResponseEntity<DatosComentarioResponse> verificar(@RequestBody @Valid DatosComentarioRequest datos) {
+//
+//        var detalleComentario = service.mostrar(datos);
+//
+//        return ResponseEntity.ok(detalleComentario);
+//    }
 
 //    @PostMapping("/csv")
 //    public String verificarCSV(@RequestBody @Valid DatosComentarioRequest datos) {

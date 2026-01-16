@@ -25,24 +25,26 @@ public class SentimentDbAdapter implements SentimentRepositoryPort {
 
         SentimentEntity entity = new SentimentEntity(
                 sentiment.getText(),
-                result.getLabel(),
-                result.getProbability()
+                result.label(),
+                result.probability()
         );
 
         repository.save(entity);
     }
 
+
     @Override
     public void saveAll(Map<Sentiment, SentimentResult> lotes) {
 
-        List<SentimentEntity> entity = lotes.entrySet().stream()
+        List<SentimentEntity> entities = lotes.entrySet().stream()
                 .map(entry -> new SentimentEntity(
                         entry.getKey().getText(),
-                        entry.getValue().getLabel(),
-                        entry.getValue().getProbability()
-                )).toList();
+                        entry.getValue().label(),
+                        entry.getValue().probability()
+                ))
+                .toList();
 
-        repository.saveAll(entity);
-
+        repository.saveAll(entities);
     }
+
 }

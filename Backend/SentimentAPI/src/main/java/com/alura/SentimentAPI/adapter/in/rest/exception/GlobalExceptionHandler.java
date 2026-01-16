@@ -1,54 +1,41 @@
 package com.alura.SentimentAPI.adapter.in.rest.exception;
-import com.alura.SentimentAPI.application.exception.SentimentAnalysisFailedException;
-import com.alura.SentimentAPI.domain.exception.InvalidSentimentTextException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(InvalidSentimentTextException.class)
-    public ResponseEntity<?> handleInvalidText(InvalidSentimentTextException ex) {
-        return ResponseEntity.badRequest().body(
-                error(HttpStatus.BAD_REQUEST, ex.getMessage())
-        );
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String, Object>> handleValidationErrors(
+            MethodArgumentNotValidException ex
+    ) {
+        Map<String, List<String>> errors = new HashMap<>();
+
+        ex.getBindingResult()
+                .getFieldErrors()
+                .forEach(error ->
+                        errors.computeIfAbsent(
+                                error.getField(),
+                                key -> new java.util.ArrayList<>()
+                        ).add(error.getDefaultMessage())
+                );
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("status", HttpStatus.BAD_REQUEST.value());
+        response.put("message", "Error de validación");
+        response.put("errors", errors);
+        response.put("timestamp", LocalDateTime.now());
+
+        return ResponseEntity.badRequest().body(response);
     }
-
-    @ExceptionHandler(SentimentAnalysisFailedException.class)
-    public ResponseEntity<?> handleAnalysisError(SentimentAnalysisFailedException ex) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
-                error(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage())
-        );
-    }
-
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> handleGeneric(Exception ex) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
-                error(HttpStatus.INTERNAL_SERVER_ERROR, "Error inesperado")
-        );
-    }
-
-    private Map<String, Object> error(HttpStatus status, String message) {
-        return Map.of(
-                "timestamp", LocalDateTime.now(),
-                "status", status.value(),
-                "error", status.getReasonPhrase(),
-                "message", message
-        );
-    }
-
-    @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<?> handleMissingBody(HttpMessageNotReadableException ex) {
-        return ResponseEntity.badRequest().body(
-                error(HttpStatus.BAD_REQUEST, "El cuerpo de la petición es obligatorio")
-        );
-    }
-
-
 }
-
