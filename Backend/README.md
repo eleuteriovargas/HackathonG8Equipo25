@@ -33,7 +33,8 @@ El Backend es responsable de exponer una **API REST** que recibe feedbacks de us
 ### Request
 ```json
 {
-  "text": "El servicio fue rápido y muy eficiente"
+  "text": "El servicio fue rápido y muy eficiente",
+   "idioma": "es"                    /*funciona para español: es, portugues: pt.*/
 }
 ```
 

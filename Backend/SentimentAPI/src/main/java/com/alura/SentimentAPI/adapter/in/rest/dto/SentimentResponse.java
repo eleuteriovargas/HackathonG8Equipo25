@@ -16,12 +16,24 @@ public class SentimentResponse {
         return texto;
     }
 
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
     public String getPrevision() {
         return prevision;
     }
 
+    public void setPrevision(String prevision) {
+        this.prevision = prevision;
+    }
+
     public double getProbabilidad() {
         return probabilidad;
+    }
+
+    public void setProbabilidad(double probabilidad) {
+        this.probabilidad = probabilidad;
     }
 }
 

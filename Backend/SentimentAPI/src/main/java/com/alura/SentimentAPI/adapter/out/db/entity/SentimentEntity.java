@@ -30,13 +30,18 @@ public class SentimentEntity {
     @Column(nullable = false)
     private Double probabilidad;
     @Column(nullable = false)
+    private String idioma;
+    @Column(nullable = false)
     @CreationTimestamp
     private LocalDateTime fecha;
 
-    public SentimentEntity(String text, String label, double probability) {
+    public SentimentEntity(String text, String label, double probability, String idioma) {
         this.id = null;
         this.texto = text;
         this.prevision = label;
         this.probabilidad = probability;
+        this.idioma = idioma;
     }
+
+
 }

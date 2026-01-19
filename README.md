@@ -1,9 +1,9 @@
 #  SentimentAPI
 
 **SentimentAPI** es un proyecto desarrollado durante un **Hackathon de No Country (ONE II – Latam)**.  
-El objetivo es analizar el **sentimiento de feedbacks de usuarios** y transformarlos en información útil para la toma de decisiones empresariales.
+El objetivo es analizar el **sentimiento de feedbacks de usuarios** y transformarlos en informacion util para la toma de decisiones empresariales.
 
-El proyecto integra un **Backend en Java (Spring Boot)** con un módulo de **Data Science** encargado del análisis de sentimientos mediante técnicas de **NLP (Natural Language Processing)**.
+El proyecto integra un **Backend en Java (Spring Boot)** con un modulo de **Data Science** encargado del analisis de sentimientos mediante tecnicas de **NLP (Natural Language Processing)**.
 
 ---
 
@@ -14,7 +14,7 @@ Permitir a empresas y organizaciones:
 - Analizar comentarios de clientes o usuarios
 - Clasificar el sentimiento en **positivo, negativo o neutral**
 - Obtener un **score de sentimiento**
-- Automatizar el análisis de grandes volúmenes de feedback
+- Automatizar el análisis de grandes volumenes de feedback
 
 ---
 
@@ -70,11 +70,11 @@ sentiment-api/
 - Jupyter Notebooks
 
 **Responsabilidades:**
-- Preparación y análisis de datos
+- Preparacion y analisis de datos
 - Entrenamiento del modelo
-- Evaluación de resultados
-- Exposición del modelo mediante una API
-- Documentación del enfoque de ML
+- Evaluacion de resultados
+- Exposicion del modelo mediante una API
+- Documentacion del enfoque de ML
 
 📁 Ubicación: `data-science/`
 
@@ -85,13 +85,15 @@ sentiment-api/
 ### Request
 ```json
 {
-  "text": "El servicio fue rápido y muy eficiente"
+  "text": "El servicio fue rápido y muy eficiente",
+	"idioma": "pt"
 }
 ```
 
 ### Response
 ```json
 {
+  "text": "El servicio fue rápido y muy eficiente",
   "sentiment": "POSITIVE",
   "score": 0.92
 }
@@ -106,10 +108,10 @@ Proyecto desarrollado por un equipo multidisciplinario compuesto por:
 - **4 Backend Developers**
 - **7 Data Science Developers**
 
-El trabajo se realizó de manera colaborativa utilizando:
+El trabajo se realiza de manera colaborativa utilizando:
 - GitHub
 - Pull Requests
-- Buenas prácticas de control de versiones
+- Buenas practicas de control de versiones
 
 ---
 
@@ -118,20 +120,20 @@ El trabajo se realizó de manera colaborativa utilizando:
 Este proyecto fue desarrollado como parte de un **Hackathon organizado por No Country**, enfocado en:
 
 - Trabajo en equipo
-- Resolución de problemas reales
-- Aplicación de conocimientos técnicos
-- Crecimiento profesional en el sector tecnológico
+- Resolucion de problemas reales
+- Aplicacion de conocimientos tecnicos
+- Crecimiento profesional en el sector tecnologico
 
 ---
 
 ## Mejoras futuras
 
-- Autenticación y autorización
+- Autenticacion y autorizacion
 - Persistencia de resultados
-- Dashboard de visualización de métricas
+- Dashboard de visualizacion de metricas
 - Soporte multi-idioma
 - Mejora del modelo de NLP
-- Integración con sistemas empresariales
+- Integracion con sistemas empresariales
 
 ---
 
