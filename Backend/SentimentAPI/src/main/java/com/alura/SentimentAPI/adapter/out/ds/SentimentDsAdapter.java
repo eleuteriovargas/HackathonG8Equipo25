@@ -58,6 +58,7 @@ public class SentimentDsAdapter implements SentimentAnalysisPort {
                 response.sentimiento(),
                 response.probabilidad()
         );
+
     }
 
     /**

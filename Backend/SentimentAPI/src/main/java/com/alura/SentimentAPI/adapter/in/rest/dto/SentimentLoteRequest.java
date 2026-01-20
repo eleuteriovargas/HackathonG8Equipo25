@@ -1,12 +1,9 @@
 package com.alura.SentimentAPI.adapter.in.rest.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
-public class SentimentRequest {
-
+public class SentimentLoteRequest {
     @NotBlank
-    @Size(min = 5)
     private String text;
     @NotBlank
     private String idioma;
@@ -27,4 +24,3 @@ public class SentimentRequest {
         this.idioma = idioma;
     }
 }
-

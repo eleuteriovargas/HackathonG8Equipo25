@@ -1,6 +1,7 @@
 package com.alura.SentimentAPI.adapter.in.rest;
 
 import com.alura.SentimentAPI.adapter.in.rest.dto.LoteSentimentResponse;
+import com.alura.SentimentAPI.adapter.in.rest.dto.SentimentLoteRequest;
 import com.alura.SentimentAPI.adapter.in.rest.dto.SentimentRequest;
 import com.alura.SentimentAPI.adapter.in.rest.dto.SentimentResponse;
 import com.alura.SentimentAPI.application.usecase.AnalizeLoteSentimentUseCase;
@@ -28,26 +29,22 @@ public class SentimentController {
     public ResponseEntity<SentimentResponse> analyze(
             @RequestBody @Valid SentimentRequest request
     ) {
-        SentimentResult result = useCase.analyze(request.getText());
+        SentimentResult result = useCase.analyze(request.getText(), request.getIdioma());
 
         return ResponseEntity.ok(
                 new SentimentResponse(
                         request.getText(),
-                        result.label(),
-                        result.probability()
+                        result.getLabel(),
+                        result.getProbability() * 100
                 )
         );
     }
 
-
     @PostMapping("/csv")
-    public ResponseEntity<LoteSentimentResponse> analizeLote(@RequestBody List<SentimentRequest> requests) {
+    public ResponseEntity<LoteSentimentResponse> analizeLote(@RequestBody List<SentimentLoteRequest> requests) {
 
-        List<String> texto = requests.stream()
-                .map(SentimentRequest::getText)
-                .toList();
 
-        LoteSentimentResponse response = loteCase.analizeAll(texto);
+        LoteSentimentResponse response = loteCase.analizeAll(requests);
 
         return ResponseEntity.ok(response);
     }
