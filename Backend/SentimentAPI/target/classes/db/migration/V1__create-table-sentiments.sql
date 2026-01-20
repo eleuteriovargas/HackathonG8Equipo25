@@ -1,0 +1,10 @@
+  create table sentiments (
+  id bigint not null auto_increment,
+  texto varchar(2000) not null,
+  prevision varchar(100) not null,
+  probabilidad double not null,
+  idioma varchar(100) not null,
+  fecha datetime not null,
+
+  primary key(id)
+  );
