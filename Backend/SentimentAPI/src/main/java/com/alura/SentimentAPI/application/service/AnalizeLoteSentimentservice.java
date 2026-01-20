@@ -90,17 +90,6 @@ public class AnalizeLoteSentimentservice implements AnalizeLoteSentimentUseCase 
 
                 neutros = textoOriginalValido.size() - suma;
 
-//                if (result.getLabel().toLowerCase().equals("neutro")){
-//                    neutros++;
-//                }
-
-                // Sumar al contador a segun el tipo: positivo, negativo o neutro
-//                switch (result.getLabel().toLowerCase()) {
-//                    case "positive" -> positivos++;
-//                    case "negative" -> negativos++;
-//                    case "neutro" -> neutros++;
-//
-//                }
 
 
 //              Guardando los datos por lotes de 50 en la bd
