@@ -2,18 +2,18 @@ package com.alura.SentimentAPI.adapter.in.rest.dto;
 
 public class SentimentResponse {
 
-    private String texto;
+    private String comentario;
     private String sentimiento;
     private double probabilidad;
 
-    public SentimentResponse(String texto, String sentimiento, double probabilidad) {
-        this.texto = texto;
+    public SentimentResponse(String comentario, String sentimiento, double probabilidad) {
+        this.comentario = comentario;
         this.sentimiento = sentimiento;
         this.probabilidad = probabilidad;
     }
 
-    public String getTexto() {
-        return texto;
+    public String getComentario() {
+        return comentario;
     }
 
     public String getSentimiento() {

@@ -16,19 +16,13 @@ public class SentimentDsAdapter implements SentimentAnalysisPort {
 
     private final WebClient webClient;
 
-    /**
-     * El adapter NO es @Component.
-     * Se instancia desde BeanConfig.
-     */
+
     public SentimentDsAdapter(String baseUrl) {
         this.webClient = WebClient.builder()
                 .baseUrl(baseUrl)
                 .build();
     }
 
-    /**
-     * Método principal usado por el caso de uso simple
-     */
     @Override
     public SentimentResult analyze(String text) {
 
@@ -60,9 +54,7 @@ public class SentimentDsAdapter implements SentimentAnalysisPort {
         );
     }
 
-    /**
-     * Método usado cuando llega el objeto de dominio completo
-     */
+
     @Override
     public SentimentResult analyze(Sentiment sentiment) {
         return analyze(sentiment.getText());

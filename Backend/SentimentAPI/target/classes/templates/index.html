@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sentiment Analyzer</title>
+</head>
+<body>
+
+<h2>Sentiment Analysis Demo</h2>
+<p><em>Model trained in English</em></p>
+
+<form method="post" action="/analyze">
+    <textarea
+            name="text"
+            rows="5"
+            cols="60"
+            placeholder="Write a comment in English..."
+            th:text="${text}">
+    </textarea>
+    <br><br>
+    <button type="submit">Analyze</button>
+</form>
+
+<div th:if="${sentiment}">
+    <h3>Result</h3>
+    <p><strong>Sentiment:</strong> <span th:text="${sentiment}"></span></p>
+    <p><strong>Probability:</strong> <span th:text="${probability}"></span></p>
+</div>
+
+<div th:if="${error}">
+    <p style="color:red" th:text="${error}"></p>
+</div>
+
+</body>
+</html>
