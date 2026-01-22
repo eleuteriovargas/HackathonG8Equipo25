@@ -27,8 +27,10 @@ __pycache__/
 .idea/tasks.xml
 .idea/shelf/
 .idea/dictionaries
+.idea/compiler.xml
 *.iml
 out/
+
 
 # Sistema Operativo
 .DS_Store
