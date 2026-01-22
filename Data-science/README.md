@@ -24,8 +24,7 @@ Desarrollar un sistema de Procesamiento de Lenguaje Natural (NLP) capaz de clasi
 2. Análisis exploratorio de datos
 3. Entrenamiento del modelo
 4. Evaluación de métricas
-5. Exposición del modelo mediante una API
-6. Integración con el Backend
+5. Exposición del modelo mediante un microservicio
 
 ---
 
@@ -34,7 +33,7 @@ Desarrollar un sistema de Procesamiento de Lenguaje Natural (NLP) capaz de clasi
 ```text
 Data-science/
 ├── data/                 # Datsets raw y clean (Archivos ignorados en Git)
-├── models/               # Modelo .joblib exportado (Archivo ignorado en Git)
+├── models/               # Modelo exportado en formato .joblib
 ├── notebooks/            # Experimentación y análisis
 │   ├── 1_cleaning.ipynb    
 │   ├── 2_EDA.ipynb         
@@ -44,14 +43,14 @@ Data-science/
 │   ├── labelling.py            # Lógica de etiquetado de sentimientos
 │   ├── transformers.py         # Transformer personalizado (Clase TextCleaner)
 │   └── __init__.py             # Inicializador de paquete
+|
+├── app.py                # microservicio para consumo del modelo por el backend
 └── requirements.txt      # Dependencias del proyecto
 ```
 
 **Notas sobre el almacenamiento de archivos**
 
 >**Carpeta data/:** Debido a las políticas de tamaño de GitHub, esta carpeta se encuentra vacía en el repositorio remoto. Para reproducir el proyecto, se requiere colocar localmente el dataset original en esta ruta (ver la sección de [Instalación y uso](#instalación-y-uso)). El notebook de limpieza generará automáticamente la versión procesada en esta misma ubicación.
-
->**Carpeta models/:** Esta carpeta está configurada para alojar los archivos .joblib resultantes del entrenamiento. Por su naturaleza binaria y peso, estos archivos no se sincronizan con el repositorio remoto. El modelo con mejor desempeño se exportará aquí automáticamente al ejecutar el notebook de modelos.
 
 ---
 
@@ -61,18 +60,24 @@ Data-science/
 
     Para asegurar la modularidad, se crearon scripts específicos para el tratamiento de datos:
 
-    - `test_preprocessing.py`: Contiene la lógica de normalización y remoción de stopwords. Incluye la función full_clean que une los pasos para la limpieza de datos.
+    - `test_preprocessing.py`: Contiene la lógica de normalización y remoción de stopwords. Incluye la función `full_clean` que une los pasos para la limpieza de datos.
 
     - `labelling.py`: Lógica de etiquetado basada en el score original del dataset (Positivo/Negativo/Neutro).
 
-    - `transformers.py`: Contiene la clase TextCleaner. Este es un Transformer personalizado que permite integrar la limpieza de texto directamente en un Pipeline de Scikit-Learn, facilitando el despliegue y evitando el data leakage.
+    - `transformers.py`: Contiene la clase `TextCleaner`. Este es un Transformer personalizado que permite integrar la limpieza de texto directamente en un Pipeline de Scikit-Learn, facilitando el despliegue y evitando el data leakage.
 
 2. Notebooks
     - `1_cleaning.ipynb`: Etapa de limpieza. Transformación del dataset crudo y aplicación de etiquetas.
 
     - `2_EDA.ipynb`: Análisis exploratorio para entender la distribución de clases.
 
-    - `3_model.ipynb`: Entrenamiento de Logistic Regression y Naive Bayes. Se realizan comparativas de métricas y validación cruzada.
+    - `3_model.ipynb`: Entrenamiento de modelos de Logistic Regression y Naive Bayes y comparación de métricas.
+    
+        Por temas de tiempo de ejecución, en el notebook solo están considerados los hiperparámetros que mostraron el mejor rendimiento, mostrado como un F-score más alto. Los hiperparámetros considerados para cada modelo fueron:
+        
+        - Naive Bayes:
+        - Regresión logística:
+    
 
 ---
 
@@ -120,7 +125,7 @@ Data-science/
 
 4. **Preparar los datos:** 
 
-    Debido al tamaño de los archivos, la carpeta Data/ está vacía en el repositorio remoto. 
+    Debido al tamaño de los archivos, la carpeta `data/` está vacía en el repositorio remoto. 
     
     Se debe descargar el dataset desde el siguiente [link](https://www.kaggle.com/datasets/snap/amazon-fine-food-reviews) y colocar el archivo con el nombre `1_raw_data.csv` en la carpeta `data/`.
 
@@ -130,9 +135,9 @@ Data-science/
     
     El modelo con mejor desempeño se guardará automáticamente en formato `.joblib` en la carpeta `models/`.
 
-6. **Ejecutar la aplicación:**
+6. **Ejecutar el microservicio:**
 
-    En la terminal, ubicarse en la carpeta Data-science y ejecutar el siguiente comando:
+    Si se quiere ejecutar el microservicio, en la terminal, ubicarse en la carpeta Data-science y ejecutar el siguiente comando:
 
     ```bash
     python -m uvicorn app:app --host 0.0.0.0 --port 8000
@@ -155,7 +160,8 @@ Data-science/
   * `Scikit-Learn` (Modelamiento y Pipelines) 
   * `Pandas` y `Numpy` (Manipulación de datos)
   * `NLTK` (vectorización de texto)
-  * `Joblib` (exportación del modelo) 
+  * `Joblib` (exportación del modelo)
+  * `FastApi` (microservicio)
 - **Jupyter Notebooks**
 
 ---
