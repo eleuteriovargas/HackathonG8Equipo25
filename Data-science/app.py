@@ -5,8 +5,8 @@ from pydantic import BaseModel
 from typing import List
 
 # 1. Configuración y Carga del Modelo
-# El pipeline ya sabe cómo tratar el texto gracias a que guardaste 
-# el vectorizador y el modelo juntos.
+# El archivo .joblib ya contiene todo el pipeline
+# para el tratamiento de datos y el modelo juntos.
 MODEL_PATH = "models/sentiment_lr.joblib"
 
 try:
@@ -36,21 +36,19 @@ def predict(request: SentimentRequest):
     la compatibilidad con el entrenamiento original, y devuelve la 
     clasificación junto con su probabilidad.
     """
-    # 1. Validación básica de entrada
+    # 3.1. Validación básica de entrada
     if not request.text.strip():
         raise HTTPException(status_code=400, detail="El texto proporcionado está vacío.")
 
     try:
-        # 1. Convertimos el texto en un DataFrame de una sola fila y una columna
-        # IMPORTANTE: El nombre de la columna ('texto') debe ser el MISMO 
-        # que usaste cuando entrenaste el modelo.
+        # 3.1.1. Se convierte el texto en un DataFrame de una sola fila y una columna
         import pandas as pd
         data_input = pd.DataFrame([request.text], columns=['text']) 
 
-        # 2. Realizar la predicción
+        # 3.1.2. Realizar la predicción
         prediction = model.predict(data_input)[0]
 
-        # 3. Obtener las probabilidades
+        # 3.1.3. Obtener las probabilidades
         probabilities = model.predict_proba(data_input)[0]
         max_probability = float(np.max(probabilities))
 
@@ -62,7 +60,7 @@ def predict(request: SentimentRequest):
 
     except Exception as e:
         # Si algo falla (ej. versión de scikit-learn o error de tipos), 
-        # devolvemos el error detallado para debuguear.
+        # se devuelve el error detallado para debuguear.
         raise HTTPException(status_code=500, detail=f"Error en la predicción: {str(e)}")
 
 # Ruta de salud para verificar que el API está viva
