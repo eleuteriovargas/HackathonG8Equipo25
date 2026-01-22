@@ -18,3 +18,24 @@ __pycache__/
 
 # Jupyter
 .ipynb_checkpoints/
+
+# IntelliJ IDEA
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/shelf/
+.idea/dictionaries
+.idea/compiler.xml
+*.iml
+out/
+
+
+# Sistema Operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build y dependencias
+target/
+build/
+.gradle/
+

@@ -5,6 +5,8 @@ import com.alura.SentimentAPI.domain.model.SentimentResult;
 
 public interface SentimentAnalysisPort {
 
+    SentimentResult analyze(String text);
+
     SentimentResult analyze(Sentiment sentiment);
 }
 

@@ -9,13 +9,18 @@ import com.alura.SentimentAPI.domain.port.out.SentimentAnalysisPort;
 import com.alura.SentimentAPI.domain.port.out.SentimentRepositoryPort;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Value;
+
 
 @Configuration
 public class BeanConfig {
 
+
     @Bean
-    public SentimentAnalysisPort sentimentAnalysisPort() {
-        return new SentimentDsAdapter();
+    public SentimentAnalysisPort sentimentAnalysisPort(
+            @Value("${ds.base-url}") String baseUrl
+    ) {
+        return new SentimentDsAdapter(baseUrl);
     }
 
     @Bean

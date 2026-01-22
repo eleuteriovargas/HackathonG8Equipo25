@@ -17,23 +17,23 @@ public class ComentarioService {
 //    @Autowired
 //    private List<ValidadorDeComentarios> validadores;
 
-    public DatosComentarioResponse mostrar(DatosComentarioRequest datos) {
+//    public DatosComentarioResponse mostrar(DatosComentarioRequest datos) {
+//
+//        var datosExistente = verificarDatos(datos);
+//        var texto = datos.texto();
+//        System.out.println(datos.texto());
+//        var comentario = new Comentario(null, datos, datosExistente.getPrevision(), datosExistente.getProbabilidad());
+////        repository.save(comentario);
+////        return new DatosDetalleProblema(comentario);
+//
+//        // validaciones
+////        validadores.forEach(v -> v.validar(datos));
+//
+//        return new DatosComentarioResponse(comentario.getTexto(), comentario.getProbabilidad());
+//    }
 
-        var datosExistente = verificarDatos(datos);
-        var texto = datos.texto();
-        System.out.println(datos.texto());
-        var comentario = new Comentario(null, datos, datosExistente.getPrevision(), datosExistente.getProbabilidad());
-//        repository.save(comentario);
-//        return new DatosDetalleProblema(comentario);
-
-        // validaciones
-//        validadores.forEach(v -> v.validar(datos));
-
-        return new DatosComentarioResponse(comentario.getTexto(), comentario.getProbabilidad());
-    }
-
-    private Comentario verificarDatos(DatosComentarioRequest datos) {
-        return dsClient.verificarComentario(datos.texto());
-    }
+//    private Comentario verificarDatos(DatosComentarioRequest datos) {
+//        return dsClient.verificarComentario(datos.texto());
+//    }
 
 }

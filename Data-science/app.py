@@ -14,6 +14,7 @@ try:
 except Exception as e:
     raise RuntimeError(f"No se pudo cargar el modelo en {MODEL_PATH}: {e}")
 
+
 # 2. Definición del Esquema de Datos (JSON Input)
 class SentimentRequest(BaseModel):
     text: str
@@ -23,11 +24,14 @@ class SentimentResponse(BaseModel):
     sentimiento: str
     probabilidad: float
 
+
 # 3. Inicialización de FastAPI
 app = FastAPI(
     title="Sentiment Analysis Service",
     description="API para clasificar sentimientos (Positivo, Negativo, Neutro) usando Regresión Logística."
 )
+
+#4. Endpoint de predicción
 
 @app.post("/predict", response_model=SentimentResponse)
 def predict(request: SentimentRequest):
@@ -63,7 +67,7 @@ def predict(request: SentimentRequest):
         # se devuelve el error detallado para debuguear.
         raise HTTPException(status_code=500, detail=f"Error en la predicción: {str(e)}")
 
-# Ruta de salud para verificar que el API está viva
+#5 Ruta de salud para verificar que el API está viva
 @app.get("/health")
 def health_check():
     return {"status": "ok", "model_loaded": True}
