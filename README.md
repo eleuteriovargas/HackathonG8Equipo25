@@ -14,7 +14,6 @@ Permitir a empresas y organizaciones:
 - Analizar comentarios de clientes o usuarios
 - Clasificar el sentimiento en **positivo, negativo o neutral**
 - Obtener un **score de sentimiento**
-- Automatizar el análisis de grandes volúmenes de feedback
 
 ---
 
@@ -24,8 +23,9 @@ El repositorio está organizado de forma modular para facilitar el trabajo colab
 
 ```
 sentiment-api/
- ├─ backend/        → API REST (Spring Boot)
- ├─ data-science/   → Modelo de análisis de sentimientos
+ ├─ backend/            → API REST (Spring Boot)
+ ├─ data-science/       → Modelo de análisis de sentimientos
+ ├─ docker-compose.yml  → Desplegar microservicios en la nube
  └─ README.md
 ```
 
@@ -46,8 +46,7 @@ sentiment-api/
 - Spring Boot
 - REST API
 - Maven
-- Swagger / OpenAPI
-- Docker (opcional)
+- Docker
 
 **Responsabilidades:**
 - Exponer endpoints REST
@@ -66,14 +65,14 @@ sentiment-api/
 - Python
 - NLP (Natural Language Processing)
 - Machine Learning
-- FastAPI o Flask
+- FastAPI
 - Jupyter Notebooks
 
 **Responsabilidades:**
 - Preparación y análisis de datos
 - Entrenamiento del modelo
 - Evaluación de resultados
-- Exposición del modelo mediante una API
+- Exposición del modelo mediante un microservicio
 - Documentación del enfoque de ML
 
 📁 Ubicación: `data-science/`
@@ -92,8 +91,8 @@ sentiment-api/
 ### Response
 ```json
 {
-  "sentiment": "POSITIVE",
-  "score": 0.92
+  "sentimient0": "POSITIVE",
+  "probabilidad": 0.92
 }
 ```
 
@@ -104,7 +103,7 @@ sentiment-api/
 Proyecto desarrollado por un equipo multidisciplinario compuesto por:
 
 - **4 Backend Developers**
-- **7 Data Science Developers**
+- **6 Data Science Developers**
 
 El trabajo se realizó de manera colaborativa utilizando:
 - GitHub
@@ -132,6 +131,8 @@ Este proyecto fue desarrollado como parte de un **Hackathon organizado por No Co
 - Soporte multi-idioma
 - Mejora del modelo de NLP
 - Integración con sistemas empresariales
+- Análisis de comentarios en lote
+- Análisis para detección de sarcasmo
 
 ---
 

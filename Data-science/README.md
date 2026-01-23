@@ -76,7 +76,21 @@ Data-science/
         Por temas de tiempo de ejecución, en el notebook solo están considerados los hiperparámetros que mostraron el mejor rendimiento, mostrado como un F-score más alto. Los hiperparámetros considerados para cada modelo fueron:
         
         - Naive Bayes:
+
+            a) *Número máximo de palabras que usa el vectorizador:* 3000, 5000, 7000.
+
+            b) *Tamaño de los n-gramas:* unigramas (1,1) o bigramas (1,2).
+
+            c) *Suavización de Laplace de Naive Bayes:* 0.1, 0.5, 1.
+
+
         - Regresión logística:
+
+            a) *Número máximo de palabras que usa el vectorizador:* 3000, 5000, 7000.
+
+            b) *Tamaño de los n-gramas:* unigramas (1,1) o bigramas (1,2).
+
+            c) *Parámetro C de Regresión logística:* 0.1, 1, 10.    
     
 
 ---
