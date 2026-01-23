@@ -11,7 +11,7 @@ Imagina que tienes una empresa y recibes decenas de comentarios de clientes cada
 Este Backend es como un "traductor de emociones" que:
 - Recibe comentarios o reseñas de clientes
 - Analiza el comentario(s)
-- Te dice si el sentimiento es **Positivo** o **Negativo**
+- Te dice si el sentimiento es **Positivo**, **Negativo** o **Neutral**
   
 ---
 
@@ -32,7 +32,6 @@ Este proyecto es perfecto para:
 - Validar datos de entrada
 - Consumir el servicio de análisis de sentimientos
 - Manejar respuestas y errores
-- Documentar la API
 - Facilitar la integración con otros sistemas
 
 ---
@@ -42,7 +41,6 @@ Este proyecto es perfecto para:
 - ☕ **Java 21**: El lenguaje de programación
 - 🍃 **Spring Boot**: Framework que hace todo más fácil
 - 🪶 **Maven**: Herramienta de compilación
-- 📝 **Swagger / OpenApi**: Documentación automática de la API
 - ☁️ **Docker**: Para que funcione igual en cualquier computadora
 - 🐳 **MySQL**: Base de datos para guardar información
 
@@ -121,7 +119,7 @@ curl -X POST http://localhost:8080/sentiment \
 **Resultado esperado:**
 ```json
 {
-  "prevision": "Positivo",
+  "sentimiento": "Positivo",
   "probabilidad": 0.92
 }
 ```
@@ -138,8 +136,25 @@ curl -X POST http://localhost:8080/sentiment \
 **Resultado esperado:**
 ```json
 {
-  "prevision": "Negativo",
+  "sentimiento": "Negativo",
   "probabilidad": 0.88
+}
+```
+
+---
+
+### 😐 Ejemplo 3: Comentario Neutral
+```bash
+curl -X POST http://localhost:8080/sentiment \
+  -H "Content-Type: application/json" \
+  -d '{"text": "El pedido llegó el martes como se indicó"}'
+```
+
+**Resultado esperado:**
+```json
+{
+  "sentimiento": "Neutro",
+  "probabilidad": 0.75
 }
 ```
 
@@ -168,20 +183,6 @@ logging.pattern.console=%d{yyyy-MM-dd HH:mm:ss} - %msg%n
 - 🟢 **INFO**: Información general (todo OK)
 - 🟡 **DEBUG**: Información detallada (para investigar)
 - 🔴 **ERROR**: Algo salió mal
-
----
-
-## 📚 Documentación interactiva
-
-¿Quieres explorar la API de forma visual? Visita:
-```
-http://localhost:8080/swagger-ui.html
-```
-
-Ahí puedes:
-- 👀 Ver todos los endpoints disponibles
-- 🧪 Probar la API directamente desde el navegador
-- 📖 Leer la documentación completa
 
 ---
 
@@ -246,11 +247,10 @@ El sistema está preparado para manejar errores:
 Cosas que nos gustaría agregar:
 
 - 📊 Endpoint `/stats` para ver estadísticas generales
-- 📝 Guardar predicciones en la base de datos
 - 🌍 Soporte para múltiples idiomas (Español + Portugués)
 - 🔍 Explicar qué palabras influyeron en la predicción
 - 📤 Subir archivos CSV con muchos comentarios a la vez
-- 🎨 Una interfaz web bonita para probar fácilmente
+- 🎨 Una interfaz web mejorada para probar fácilmente
 
 ---
 
@@ -287,3 +287,4 @@ Si tienes problemas:
 Si te gustó el proyecto o tienes sugerencias, ¡no dudes en contribuir! 🌟
 
 Happy coding! 💻✨
+
