@@ -30,8 +30,9 @@ public class AnalizeLoteSentimentservice implements AnalizeLoteSentimentUseCase 
     @Override
     public LoteSentimentResponse analizeAll(List<SentimentLoteRequest> texto) {
 
-//        List<SentimentResult> resultadostotales = new ArrayList<>();
         List<SentimentLote> loteGuardar = new ArrayList<>();
+        List<SentimentLote> listaProcesada = new ArrayList<>();
+
 
 //        texto Ignorado que no cumple con 5 caracters
         List<String> textoIgnorado = new ArrayList<>();
@@ -39,12 +40,16 @@ public class AnalizeLoteSentimentservice implements AnalizeLoteSentimentUseCase 
 //        texto sin ignorar
         List<SentimentValidos> textoOriginalValido = new ArrayList<>();
 
-        for (SentimentLoteRequest textoOrig : texto) {
-            try {
 
-                if (textoOrig.getText().length() < 5) {
+        for (SentimentLoteRequest textoOrig : texto) {
+
+            var longitud = 5;
+
+            try {
+                if (textoOrig.getText().length() <= 4) {
                     textoIgnorado.add(textoOrig.getText());
-                } else if (textoOrig.getText().length() >= 5){
+                    System.out.println("tiene texto invalido " + textoOrig.getText());
+                } else if (textoOrig.getText().length() >= longitud){
                     SentimentValidos Agregar = new SentimentValidos(textoOrig.getText(), textoOrig.getIdioma());
                     textoOriginalValido.add(Agregar);
                 }
@@ -67,8 +72,6 @@ public class AnalizeLoteSentimentservice implements AnalizeLoteSentimentUseCase 
 //              traduciendo el texto a ingles por que el modelo entrenado esta en ingles
                 String textTraducer = traduccionPort.traducir(text.getText(), text.getIdioma());
 
-//                para prueba si el traductor funciona(opcional)
-//                System.out.println(textTraducer);
 
 //                analizando el comentario
                 SentimentResult result = analizePort.analyze(new Sentiment(textTraducer));
@@ -77,18 +80,13 @@ public class AnalizeLoteSentimentservice implements AnalizeLoteSentimentUseCase 
                         result.getProbability(), text.getIdioma());
 
                 loteGuardar.add(sentimentOriginal);
+                listaProcesada.add(sentimentOriginal);
 
-                if (result.getLabel().toLowerCase().equals("positive")){
+                if (result.getLabel().equals("Positive")){
                     positivos++;
-                }
-
-                if (result.getLabel().toLowerCase().equals("negative")) {
+                }else if (result.getLabel().equals("Negative")) {
                     negativos++;
-                }
-
-                int suma = positivos + negativos;
-
-                neutros = textoOriginalValido.size() - suma;
+                } else neutros++;
 
 
 
@@ -109,7 +107,7 @@ public class AnalizeLoteSentimentservice implements AnalizeLoteSentimentUseCase 
         }
 
 //        Top 5 Mejores comentarios para frontend
-        List<SentimentLote> Top5 = loteGuardar
+        List<SentimentLote> Top5 = listaProcesada
                 .stream()
                 .filter(r -> r.getPrevision().toLowerCase().contains("positive"))
                 .sorted(Comparator.comparing(SentimentLote::getProbabilidad).reversed())
@@ -117,16 +115,20 @@ public class AnalizeLoteSentimentservice implements AnalizeLoteSentimentUseCase 
                 .collect(Collectors.toList());
 
 //        FILTRADO CRITICO: solo comentarios negativos con probabilidad >= 0.8
-        List<SentimentLote> Criticos = loteGuardar
+        List<SentimentLote> Criticos = listaProcesada
                 .stream()
                 .filter(r -> r.getPrevision().toLowerCase().contains("negative"))
                 .filter(r -> r.getProbabilidad() >= 0.8)
                 .collect(Collectors.toList());
 
+        System.out.println("todos los neutros " +  neutros);
+
 
         return new LoteSentimentResponse(
-                positivos, negativos, neutros, loteGuardar.size(),
-                textoIgnorado.size(),texto.size(),
+                positivos, negativos, neutros,
+                textoIgnorado.size(),
+                texto.size(),
+                textoOriginalValido.size(),
                 Top5,
                 Criticos
         );

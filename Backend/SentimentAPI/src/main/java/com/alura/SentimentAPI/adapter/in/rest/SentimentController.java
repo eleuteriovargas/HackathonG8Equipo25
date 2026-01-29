@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/sentiment")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class SentimentController {
 
     private final AnalyzeSentimentUseCase useCase;

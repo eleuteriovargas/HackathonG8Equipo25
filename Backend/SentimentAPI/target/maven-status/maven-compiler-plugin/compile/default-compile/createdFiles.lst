@@ -1,7 +1,0 @@
-com\alura\SentimentAPI\domain\comentarios\DatosComentarioResponse.class
-com\alura\SentimentAPI\domain\comentarios\validaciones\ValidadorDeComentarios.class
-com\alura\SentimentAPI\domain\comentarios\DsClient.class
-com\alura\SentimentAPI\domain\ValidacionException.class
-com\alura\SentimentAPI\SentimentApiApplication.class
-com\alura\SentimentAPI\domain\comentarios\ComentarioService.class
-com\alura\SentimentAPI\domain\comentarios\HelloController.class

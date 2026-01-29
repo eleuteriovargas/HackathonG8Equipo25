@@ -1,18 +1,24 @@
 import joblib
+import os
 import numpy as np
+import pandas as pd
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from typing import List
 
-# 1. Configuración y Carga del Modelo
-# El pipeline ya sabe cómo tratar el texto gracias a que guardaste 
-# el vectorizador y el modelo juntos.
+# ESTA LÍNEA ES VITAL: Registra el transformador para que joblib lo encuentre
+from src.transformers import TextCleaner 
+
+app = FastAPI(title="Sentiment API")
+
+# Ruta correcta dentro del contenedor
 MODEL_PATH = "models/sentiment_lr.joblib"
 
 try:
     model = joblib.load(MODEL_PATH)
+    print("✅ Modelo cargado exitosamente con sus transformadores personalizados")
 except Exception as e:
-    raise RuntimeError(f"No se pudo cargar el modelo en {MODEL_PATH}: {e}")
+    print(f"❌ Error crítico al cargar el modelo: {e}")
+    model = None
 
 # 2. Definición del Esquema de Datos (JSON Input)
 class SentimentRequest(BaseModel):

@@ -10,7 +10,7 @@ import java.util.Map;
 @Component
 public class LibreTraducirAdapter implements TraduccionPort {
 
-    private final WebClient client = WebClient.create("http://localhost:5000");
+    private final WebClient client = WebClient.create("http://libretranslate:5000");
 
     @Override
     public String traducir(String texto, String idiomaOrigen) {
@@ -28,6 +28,7 @@ public class LibreTraducirAdapter implements TraduccionPort {
                 .block();
 
         return repuestaJson;
+
 
     }
 

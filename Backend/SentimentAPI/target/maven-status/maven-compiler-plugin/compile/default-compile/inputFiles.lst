@@ -1,11 +1,40 @@
-C:\Users\Vargas\Downloads\HackathonG8Equipo25\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\config\CorsConfiguration.java
-C:\Users\Vargas\Downloads\HackathonG8Equipo25\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\comentarios\Comentario.java
-C:\Users\Vargas\Downloads\HackathonG8Equipo25\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\comentarios\ComentarioController.java
-C:\Users\Vargas\Downloads\HackathonG8Equipo25\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\comentarios\ComentarioService.java
-C:\Users\Vargas\Downloads\HackathonG8Equipo25\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\comentarios\DatosComentarioRequest.java
-C:\Users\Vargas\Downloads\HackathonG8Equipo25\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\comentarios\DatosComentarioResponse.java
-C:\Users\Vargas\Downloads\HackathonG8Equipo25\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\comentarios\DsClient.java
-C:\Users\Vargas\Downloads\HackathonG8Equipo25\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\comentarios\HelloController.java
-C:\Users\Vargas\Downloads\HackathonG8Equipo25\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\comentarios\validaciones\ValidadorDeComentarios.java
-C:\Users\Vargas\Downloads\HackathonG8Equipo25\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\ValidacionException.java
-C:\Users\Vargas\Downloads\HackathonG8Equipo25\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\SentimentApiApplication.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\adapter\in\rest\dto\LoteSentimentResponse.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\adapter\in\rest\dto\SentimentLoteRequest.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\adapter\in\rest\dto\SentimentRequest.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\adapter\in\rest\dto\SentimentResponse.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\adapter\in\rest\dto\SentimentValidos.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\adapter\in\rest\dto\TraduccionResponse.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\adapter\in\rest\exception\GlobalExceptionHandler.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\adapter\in\rest\SentimentController.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\adapter\out\db\entity\SentimentEntity.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\adapter\out\db\repository\SentimentJpaRepository.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\adapter\out\db\SentimentDbAdapter.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\adapter\out\ds\dto\SentimentDsRequest.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\adapter\out\ds\dto\SentimentDsResponse.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\adapter\out\ds\exception\DataScienceServiceException.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\adapter\out\ds\SentimentDsAdapter.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\adapter\out\Traductor\LibreTraducirAdapter.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\application\exception\SentimentAnalysisFailedException.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\application\service\AnalizeLoteSentimentservice.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\application\service\AnalyzeSentimentService.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\application\usecase\AnalizeLoteSentimentUseCase.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\application\usecase\AnalyzeSentimentUseCase.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\config\BeanConfig.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\config\CorsConfiguration.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\comentarios\Comentario.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\comentarios\ComentarioController.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\comentarios\ComentarioService.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\comentarios\DatosComentarioRequest.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\comentarios\DatosComentarioResponse.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\comentarios\DsClient.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\comentarios\HelloController.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\comentarios\validaciones\ValidadorDeComentarios.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\exception\InvalidSentimentTextException.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\model\Sentiment.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\model\SentimentLote.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\model\SentimentResult.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\port\out\SentimentAnalysisPort.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\port\out\SentimentRepositoryPort.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\port\out\TraduccionPort.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\domain\ValidacionException.java
+C:\Users\Melvin Gutierrez\Videos\GIT HACKATON\Backend\SentimentAPI\src\main\java\com\alura\SentimentAPI\SentimentApiApplication.java

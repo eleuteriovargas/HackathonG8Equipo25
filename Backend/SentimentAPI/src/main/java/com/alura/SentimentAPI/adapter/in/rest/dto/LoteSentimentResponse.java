@@ -7,10 +7,10 @@ import java.util.List;
 public record LoteSentimentResponse(
         int totalPositivos,
         int totalNegativos,
-        int totalneutros,
-        int totalProcesados,
-        int TotalNoProcesados,
+        int totalNeutros,
+        int totalNoProcesados,
         int totalComentarios,
+        int totalProcesados,
         List<SentimentLote> Top5,
         List<SentimentLote> comentariosCriticos
 ) {

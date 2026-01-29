@@ -1,16 +1,15 @@
-# Dockerfile
+# 1. Definir la imagen base primero
+FROM eclipse-temurin:21-jre-alpine
 
-#Imagen base con Java 21 (LTS)
-FROM eclipse-temurin:21-jdk-alpine
+# 2. Instalar las librerías necesarias para que funcione HTTPS hacia Render
+RUN apk add --no-cache libgcc libstdc++
 
-# Directorio de trabajo dentro del contenedor
+# 3. Configurar el directorio de trabajo
 WORKDIR /app
 
-# Copiamos el JAR desde la subcarpeta /
-COPY SentimentAPI/target/*.jar app.jar
+# 4. Copiar tu aplicación
+COPY Backend/SentimentAPI/target/app.jar app.jar
 
-# Puerto expuesto
+# 5. Puertos y ejecución
 EXPOSE 8080
-
-# Comando que ejecuta el JAR
 ENTRYPOINT ["java", "-jar", "app.jar"]

@@ -1,4 +1,15 @@
 services:
+# --- SERVICIO DEL MODELO (DATA SCIENCE) ---
+  sentiment-model:
+    build:
+      context: ./Data-science  # Ruta a la carpeta donde está tu Dockerfile de Python
+    container_name: sentiment-model-api
+    ports:
+      - "8000:8000"
+    networks:
+      - sentiment-network
+    restart: always
+
   mysql:
     image: mysql:8.0
     container_name: sentiment-mysql
@@ -17,9 +28,13 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - sentiment-network
 
   backend:
-    build: ./Backend
+    build:
+      context: .              # IMPORTANTE: El punto significa la raíz del proyecto
+      dockerfile: Backend/Dockerfile
     container_name: sentiment-backend
     restart: always
     ports:
@@ -28,26 +43,47 @@ services:
       mysql:
         condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/sentiment_db?allowPublicKeyRetrieval=true&useSSL=false
-      SPRING_DATASOURCE_USERNAME: sentiment
-      SPRING_DATASOURCE_PASSWORD: sentiment
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_DATASOURCE_URL: "jdbc:mysql://mysql:3306/sentiment_db?allowPublicKeyRetrieval=true&useSSL=false"
+      SPRING_DATASOURCE_USERNAME: "sentiment"
+      SPRING_DATASOURCE_PASSWORD: "sentiment"
+      SPRING_JPA_HIBERNATE_DDL_AUTO: "update"
+      JAVA_OPTS: "-Dio.netty.noNative=true -Dio.netty.native.workdir=/tmp -Dreactor.netty.http.server.accessLogEnabled=true"
+    networks:
+      - sentiment-network
 
-volumes:
-  mysql_data:
-
-
-services:
   libretranslate:
     image: libretranslate/libretranslate:latest
     container_name: libretranslate_server
     ports:
       - "5000:5000"
     environment:
-      - LT_HOST=0.0.0.0
-      - LT_PORT=5000
-      - LT_LOAD_ONLY=en,es,pt
-      - LT_UPDATE_MODELS=false
+      LT_HOST: "0.0.0.0"
+      LT_PORT: 5000
+      LT_LOAD_ONLY: "en,fr,pt,es"
+      LT_UPDATE_MODELS: "true"
     volumes:
       - ./mis_idiomas:/home/libretranslate/.local
     restart: always
+    networks:
+      - sentiment-network
+
+  frontend:
+    build: ./frontend-app
+    container_name: sentiment-frontend
+    ports:
+      - "80:80"
+    # Nota: Si usas Nginx en el Dockerfile, el volume de abajo podría 
+    # sobrescribir la configuración. Úsalo solo para desarrollo.
+    volumes:
+      - ./frontend-app:/usr/share/nginx/html
+    depends_on:
+      - backend
+    networks:
+      - sentiment-network
+
+volumes:
+  mysql_data:
+
+networks:
+  sentiment-network:
+    driver: bridge
